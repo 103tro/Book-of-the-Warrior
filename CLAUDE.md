@@ -82,6 +82,7 @@
 - **Лайтбокс-зум** спрацьовує на `img.photo-slot-img`, `img.roster-photo-sm`, `img.org-shevron-sm`, `img.leisure-photo` — нове фото, яке має зумитись, познач одним з цих класів.
 - **Список нагород**: `<ul class="awards-list"><li><span class="awards-date">...</span><span>...</span></li>...`.
 - **Таблиця даних**: `<table class="results-table">`, `overflow-x:auto` wrapper для мобільного скролу.
+- **Шеврон у «Структурі бригади» → посилання на сторінку підрозділу**: якщо для підрозділу зі списку org-list (`Бригада → Структура бригади`) уже є власна сторінка (напр. у «Батальйони»), обгорни його `<img>` + `<span class="org-name-sm">` у `<a class="org-link-battalion" href="#ID-розділу-підрозділу">` (клас `display:contents`, тож flex-розкладка `<li>` не ламається). Лайтбокс-обробник уже має `if (e.target.closest('.org-list a')) return;`, тож зум не конфліктує з переходом. `applyHash()` сам активує потрібну `.battalion-group`, якщо ціль посилання — усередині неї. Нічого більше міняти не треба — просто додавай такий `<a>` для кожного нового підрозділу, що отримав власний опис.
 - **YouTube-відео**: facade-патерн `.video-embed.lite-yt` з `data-src`, `<img class="lite-yt-thumb">` (fallback maxresdefault→hqdefault + onload-перевірка на generic 120×90 плейсхолдер), `<button class="lite-yt-play">` — ніколи не вставляй сирий `<iframe>` напряму.
 
 ## Навігація: вкладка з кількома підрозділами (патерн «Батальйони»)
