@@ -1571,7 +1571,9 @@ button.read-more-btn.expanded svg{transform:rotate(180deg);}
       e.stopPropagation();
       var btn = e.target.closest('.battalion-picker-item');
       if (!btn) return;
-      setActiveBattalionGroup(btn.getAttribute('data-battalion'));
+      var gid = btn.getAttribute('data-battalion');
+      setActiveBattalionGroup(gid);
+      if (window.history && history.pushState) history.pushState(null, '', '#' + gid);
       closeBattalionPicker();
       var panel = document.getElementById('tab-battalions');
       if (panel) panel.scrollIntoView({behavior:'auto', block:'start'});
