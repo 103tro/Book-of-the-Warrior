@@ -237,6 +237,11 @@ button.subnav-item:hover{color:var(--ink);background:var(--paper);}
 .results-table th,.results-table td{padding:8px 10px;border:1px solid var(--border);text-align:center;}
 .results-table th{background:var(--paper);font-weight:600;}
 .results-table td:first-child,.results-table th:first-child{text-align:left;}
+.battalion-picker-bar{border-bottom:1px solid var(--border);}
+.battalion-picker-bar .subnav-global{margin:10px 2rem;}
+@media (max-width:860px){.battalion-picker-bar .subnav-global{margin:10px 1.2rem;}}
+.battalion-group{display:none;flex-direction:column;gap:1.25rem;}
+.battalion-group.active{display:flex;}
 .battalion-shevron-row{display:flex;flex-wrap:nowrap;justify-content:center;gap:20px;padding:1rem 0 .5rem;overflow-x:auto;}
 .battalion-shevron-row .symbol-cell{flex:0 0 auto;width:150px;gap:.5rem;}
 @media (max-width:760px){
@@ -574,6 +579,8 @@ button.read-more-btn.expanded svg{transform:rotate(180deg);}
 </section>
 </div>
 <div class="tab-panel" id="tab-battalions">
+<div class="battalion-picker-bar"><div class="subnav-global" id="battalionPickerWrap" style="display:"><button class="subnav-toggle" id="battalionPickerToggle" type="button" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg><span>Батальйон: <span id="battalionPickerLabel">2 ББпС «Хижий Птах»</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="subnav-dropdown" id="battalionPickerDropdown"><button class="subnav-item battalion-picker-item active" data-battalion="bgroup-2bbs" data-label="2 ББпС «Хижий Птах»" type="button"><span>2 батальйон безпілотних систем «Хижий Птах»</span></button></div></div></div>
+<div class="battalion-group active" id="bgroup-2bbs">
 <section class="card" id="bat-2bbs-founding">
   <h2 class="card-title card-title-solo">2 батальйон безпілотних систем «Хижий Птах»</h2>
   <div class="photo-slots n1"><img loading="lazy" class="photo-slot-img" style="aspect-ratio:3/1;" src="images/battalion-2bbs-banner.webp" alt="Емблема «Хижий Птах» 2 батальйону безпілотних систем 103 ОБр ТрО"></div>
@@ -627,6 +634,7 @@ button.read-more-btn.expanded svg{transform:rotate(180deg);}
   <h2 class="card-title card-title-solo">Управління батальйону</h2>
   <div class="leisure-gallery square" data-gallery><div class="leisure-slide active"><img loading="lazy" class="leisure-photo" src="images/battalion-2bbs-staff-horin.webp" alt="Капітан Горін Ігор Ярославович «Броня»"><div class="person-caption"><span class="person-name">Капітан Горін Ігор Ярославович «Броня»</span><span class="person-role">Начальник штабу — заступник командира батальйону</span></div></div><div class="leisure-slide"><img loading="lazy" class="leisure-photo" src="images/battalion-2bbs-staff-pidhornyi.webp" alt="Старший лейтенант Підгорний Олександр Віталійович «Агат»"><div class="person-caption"><span class="person-name">Старший лейтенант Підгорний Олександр Віталійович «Агат»</span><span class="person-role">Заступник командира батальйону</span></div></div><div class="leisure-slide"><img loading="lazy" class="leisure-photo" src="images/battalion-2bbs-staff-yanyshivskyi.webp" alt="Майор Янишівський Маркіян Мирославович «Маркус»"><div class="person-caption"><span class="person-name">Майор Янишівський Маркіян Мирославович «Маркус»</span><span class="person-role">Заступник командира батальйону з психологічної підтримки персоналу</span></div></div><button class="leisure-nav prev" type="button" aria-label="Попереднє фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button><button class="leisure-nav next" type="button" aria-label="Наступне фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button></div><div class="leisure-dots"><button class="dot active" type="button" aria-label="Світлина 1"></button><button class="dot" type="button" aria-label="Світлина 2"></button><button class="dot" type="button" aria-label="Світлина 3"></button></div>
 </section>
+</div>
 </div>
 <div class="tab-panel" id="tab-power">
 <section class="card" id="identity-intro">
@@ -1321,7 +1329,8 @@ button.read-more-btn.expanded svg{transform:rotate(180deg);}
   });
 })();
 (function(){
-  var subnavData = {"tab-commander": "<button class=\"subnav-item\" data-target=\"foreword\"><span>Відтепер ти серед своїх</span></button>", "tab-brigade": "<button class=\"subnav-item\" data-target=\"symbol-shevrons\"><span>Символіка</span></button><button class=\"subnav-item\" data-target=\"commander-info\"><span>Командир</span></button><button class=\"subnav-item\" data-target=\"path-command\"><span>Командування</span></button><button class=\"subnav-item\" data-target=\"path-structure\"><span>Структура бригади</span></button><button class=\"subnav-item\" data-target=\"path-timeline\"><span>Бойовий шлях</span></button><button class=\"subnav-item\" data-target=\"path-awards\"><span>Нагороди</span></button>", "tab-battalions": "<button class=\"subnav-item\" data-target=\"bat-2bbs-founding\"><span>2 батальйон БпС «Хижий Птах»</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-path\"><span>Бойовий шлях</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-awards\"><span>Нагороди</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-results\"><span>Результативність</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-commanders\"><span>Командири батальйону</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-symbols\"><span>Символіка та традиції</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-staff\"><span>Управління батальйону</span></button>", "tab-power": "<button class=\"subnav-item\" data-target=\"identity-intro\"><span>Тяглість, що стає силою</span></button><button class=\"subnav-item\" data-target=\"tradition\"><span>Та сама земля, ті самі люди, та сама мета</span></button><button class=\"subnav-item\" data-target=\"oath\"><span>Клятва</span></button><button class=\"subnav-item\" data-target=\"faith\"><span>Віра і служіння</span></button><button class=\"subnav-item\" data-target=\"prayer\"><span>Молитва</span></button><button class=\"subnav-item\" data-target=\"values\"><span>Вільні люди, які обрали свободу</span></button><button class=\"subnav-item\" data-target=\"code\"><span>Кодекс честі</span></button>", "tab-heroes": "<button class=\"subnav-item\" data-target=\"hero2\"><span>Юрій Жуковець</span></button><button class=\"subnav-item\" data-target=\"hero1\"><span>Любомир Мікало</span></button><button class=\"subnav-item\" data-target=\"hero6\"><span>Сергій Артемюк</span></button><button class=\"subnav-item\" data-target=\"hero10\"><span>Петро Кушик</span></button><button class=\"subnav-item\" data-target=\"hero7\"><span>Василь Гарасим</span></button><button class=\"subnav-item\" data-target=\"hero5\"><span>Юрій Савчук</span></button><button class=\"subnav-item\" data-target=\"hero8\"><span>Ярослав Гафінов</span></button><button class=\"subnav-item\" data-target=\"hero9\"><span>Валентин Зінчук</span></button><button class=\"subnav-item\" data-target=\"hero4\"><span>Олег Муц</span></button><button class=\"subnav-item\" data-target=\"hero11\"><span>Андрій Собчишин</span></button>", "tab-quotes": "<button class=\"subnav-item\" data-target=\"quotes-intro\"><span>Думка та слово</span></button><button class=\"subnav-item\" data-target=\"q-richnytsia\"><span>Війна</span></button><button class=\"subnav-item\" data-target=\"q-liudska-dusha\"><span>Людська душа</span></button><button class=\"subnav-item\" data-target=\"q-lyubov-do-ukrainy\"><span>Любов до України</span></button><button class=\"subnav-item\" data-target=\"q-moskvofilstvo\"><span>Москвофільство</span></button><button class=\"subnav-item\" data-target=\"q-vdiachnist\"><span>Вдячність</span></button><button class=\"subnav-item\" data-target=\"q-vyhovannia\"><span>Виховання героїв</span></button><button class=\"subnav-item\" data-target=\"q-gotovnist\"><span>Готовність</span></button><button class=\"subnav-item\" data-target=\"q-zhertva\"><span>Жертва</span></button><button class=\"subnav-item\" data-target=\"q-tryvalist\"><span>Витривалість</span></button><button class=\"subnav-item\" data-target=\"q-dukhovni-vpravy\"><span>Духовні вправи</span></button><button class=\"subnav-item\" data-target=\"q-dusha-narodu\"><span>Душа народу</span></button><button class=\"subnav-item\" data-target=\"q-bozha-volya\"><span>Божа воля</span></button><button class=\"subnav-item\" data-target=\"q-apostoly\"><span>Апостоли</span></button><button class=\"subnav-item\" data-target=\"q-bezbozhnist\"><span>Безбожність</span></button><button class=\"subnav-item\" data-target=\"q-oshchadnist\"><span>Ощадність</span></button>", "tab-leisure": "<button class=\"subnav-item\" data-target=\"leisure-football\"><span>Футбол</span></button><button class=\"subnav-item\" data-target=\"leisure-shooting\"><span>Стрілецько-штурмовий турнір</span></button><button class=\"subnav-item\" data-target=\"leisure-culture\"><span>Культурний десант</span></button><button class=\"subnav-item\" data-target=\"leisure-volleyball\"><span>Волейбол</span></button><button class=\"subnav-item\" data-target=\"leisure-proyav\"><span>Фотовиставка «Прояв»</span></button><button class=\"subnav-item\" data-target=\"leisure-camps\"><span>Літні дитячі табори</span></button><button class=\"subnav-item\" data-target=\"leisure-bukovel\"><span>Відпочинок у Буковелі</span></button>", "tab-sheptytsky": "<button class=\"subnav-item\" data-target=\"shept-intro\"><span>Митрополит Андрей Шептицький</span></button><button class=\"subnav-item\" data-target=\"shept-origins\"><span>Походження і вибір життєвого шляху</span></button><button class=\"subnav-item\" data-target=\"shept-service\"><span>Служіння українському народові</span></button><button class=\"subnav-item\" data-target=\"shept-economy\"><span>Економічна самостійність і сила громади</span></button><button class=\"subnav-item\" data-target=\"shept-exile\"><span>Перша світова війна і заслання</span></button><button class=\"subnav-item\" data-target=\"shept-wwii\"><span>Позиція під час Другої світової війни</span></button><button class=\"subnav-item\" data-target=\"shept-last-years\"><span>Останні роки життя</span></button><button class=\"subnav-item\" data-target=\"shept-legacy\"><span>Визнання і спадщина</span></button><button class=\"subnav-item\" data-target=\"shept-video-short\"><span>Коротко про митрополита</span></button><button class=\"subnav-item\" data-target=\"shept-film\"><span>Документальний фільм</span></button>"};
+  var subnavData = {"tab-commander": "<button class=\"subnav-item\" data-target=\"foreword\"><span>Відтепер ти серед своїх</span></button>", "tab-brigade": "<button class=\"subnav-item\" data-target=\"symbol-shevrons\"><span>Символіка</span></button><button class=\"subnav-item\" data-target=\"commander-info\"><span>Командир</span></button><button class=\"subnav-item\" data-target=\"path-command\"><span>Командування</span></button><button class=\"subnav-item\" data-target=\"path-structure\"><span>Структура бригади</span></button><button class=\"subnav-item\" data-target=\"path-timeline\"><span>Бойовий шлях</span></button><button class=\"subnav-item\" data-target=\"path-awards\"><span>Нагороди</span></button>", "tab-power": "<button class=\"subnav-item\" data-target=\"identity-intro\"><span>Тяглість, що стає силою</span></button><button class=\"subnav-item\" data-target=\"tradition\"><span>Та сама земля, ті самі люди, та сама мета</span></button><button class=\"subnav-item\" data-target=\"oath\"><span>Клятва</span></button><button class=\"subnav-item\" data-target=\"faith\"><span>Віра і служіння</span></button><button class=\"subnav-item\" data-target=\"prayer\"><span>Молитва</span></button><button class=\"subnav-item\" data-target=\"values\"><span>Вільні люди, які обрали свободу</span></button><button class=\"subnav-item\" data-target=\"code\"><span>Кодекс честі</span></button>", "tab-heroes": "<button class=\"subnav-item\" data-target=\"hero2\"><span>Юрій Жуковець</span></button><button class=\"subnav-item\" data-target=\"hero1\"><span>Любомир Мікало</span></button><button class=\"subnav-item\" data-target=\"hero6\"><span>Сергій Артемюк</span></button><button class=\"subnav-item\" data-target=\"hero10\"><span>Петро Кушик</span></button><button class=\"subnav-item\" data-target=\"hero7\"><span>Василь Гарасим</span></button><button class=\"subnav-item\" data-target=\"hero5\"><span>Юрій Савчук</span></button><button class=\"subnav-item\" data-target=\"hero8\"><span>Ярослав Гафінов</span></button><button class=\"subnav-item\" data-target=\"hero9\"><span>Валентин Зінчук</span></button><button class=\"subnav-item\" data-target=\"hero4\"><span>Олег Муц</span></button><button class=\"subnav-item\" data-target=\"hero11\"><span>Андрій Собчишин</span></button>", "tab-quotes": "<button class=\"subnav-item\" data-target=\"quotes-intro\"><span>Думка та слово</span></button><button class=\"subnav-item\" data-target=\"q-richnytsia\"><span>Війна</span></button><button class=\"subnav-item\" data-target=\"q-liudska-dusha\"><span>Людська душа</span></button><button class=\"subnav-item\" data-target=\"q-lyubov-do-ukrainy\"><span>Любов до України</span></button><button class=\"subnav-item\" data-target=\"q-moskvofilstvo\"><span>Москвофільство</span></button><button class=\"subnav-item\" data-target=\"q-vdiachnist\"><span>Вдячність</span></button><button class=\"subnav-item\" data-target=\"q-vyhovannia\"><span>Виховання героїв</span></button><button class=\"subnav-item\" data-target=\"q-gotovnist\"><span>Готовність</span></button><button class=\"subnav-item\" data-target=\"q-zhertva\"><span>Жертва</span></button><button class=\"subnav-item\" data-target=\"q-tryvalist\"><span>Витривалість</span></button><button class=\"subnav-item\" data-target=\"q-dukhovni-vpravy\"><span>Духовні вправи</span></button><button class=\"subnav-item\" data-target=\"q-dusha-narodu\"><span>Душа народу</span></button><button class=\"subnav-item\" data-target=\"q-bozha-volya\"><span>Божа воля</span></button><button class=\"subnav-item\" data-target=\"q-apostoly\"><span>Апостоли</span></button><button class=\"subnav-item\" data-target=\"q-bezbozhnist\"><span>Безбожність</span></button><button class=\"subnav-item\" data-target=\"q-oshchadnist\"><span>Ощадність</span></button>", "tab-leisure": "<button class=\"subnav-item\" data-target=\"leisure-football\"><span>Футбол</span></button><button class=\"subnav-item\" data-target=\"leisure-shooting\"><span>Стрілецько-штурмовий турнір</span></button><button class=\"subnav-item\" data-target=\"leisure-culture\"><span>Культурний десант</span></button><button class=\"subnav-item\" data-target=\"leisure-volleyball\"><span>Волейбол</span></button><button class=\"subnav-item\" data-target=\"leisure-proyav\"><span>Фотовиставка «Прояв»</span></button><button class=\"subnav-item\" data-target=\"leisure-camps\"><span>Літні дитячі табори</span></button><button class=\"subnav-item\" data-target=\"leisure-bukovel\"><span>Відпочинок у Буковелі</span></button>", "tab-sheptytsky": "<button class=\"subnav-item\" data-target=\"shept-intro\"><span>Митрополит Андрей Шептицький</span></button><button class=\"subnav-item\" data-target=\"shept-origins\"><span>Походження і вибір життєвого шляху</span></button><button class=\"subnav-item\" data-target=\"shept-service\"><span>Служіння українському народові</span></button><button class=\"subnav-item\" data-target=\"shept-economy\"><span>Економічна самостійність і сила громади</span></button><button class=\"subnav-item\" data-target=\"shept-exile\"><span>Перша світова війна і заслання</span></button><button class=\"subnav-item\" data-target=\"shept-wwii\"><span>Позиція під час Другої світової війни</span></button><button class=\"subnav-item\" data-target=\"shept-last-years\"><span>Останні роки життя</span></button><button class=\"subnav-item\" data-target=\"shept-legacy\"><span>Визнання і спадщина</span></button><button class=\"subnav-item\" data-target=\"shept-video-short\"><span>Коротко про митрополита</span></button><button class=\"subnav-item\" data-target=\"shept-film\"><span>Документальний фільм</span></button>"};
+  var battalionSubnavData = {"bgroup-2bbs": "<button class=\"subnav-item\" data-target=\"bat-2bbs-founding\"><span>2 батальйон БпС «Хижий Птах»</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-path\"><span>Бойовий шлях</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-awards\"><span>Нагороди</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-results\"><span>Результативність</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-commanders\"><span>Командири батальйону</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-symbols\"><span>Символіка та традиції</span></button><button class=\"subnav-item\" data-target=\"bat-2bbs-staff\"><span>Управління батальйону</span></button>"};
   var tabItems = Array.prototype.slice.call(document.querySelectorAll('.tab-item'));
   var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
   var subnavGlobal = document.getElementById('subnavGlobal');
@@ -1335,8 +1344,19 @@ button.read-more-btn.expanded svg{transform:rotate(180deg);}
     subnavDropdown.classList.remove('open');
   }
 
+  function activeBattalionGroupId(){
+    var active = document.querySelector('.battalion-group.active');
+    return active ? active.id : null;
+  }
+
   function updateSubnavFor(gid){
-    var html = subnavData[gid];
+    var html;
+    if (gid === 'tab-battalions') {
+      var bgid = activeBattalionGroupId();
+      html = bgid ? battalionSubnavData[bgid] : null;
+    } else {
+      html = subnavData[gid];
+    }
     var count = html ? (html.match(/subnav-item/g) || []).length : 0;
     if (html && count > 1) {
       subnavDropdown.innerHTML = html;
@@ -1491,6 +1511,54 @@ button.read-more-btn.expanded svg{transform:rotate(180deg);}
     }
     closeSubnav();
   });
+
+  var battalionPickerToggle = document.getElementById('battalionPickerToggle');
+  var battalionPickerDropdown = document.getElementById('battalionPickerDropdown');
+  var battalionPickerLabel = document.getElementById('battalionPickerLabel');
+
+  function closeBattalionPicker(){
+    if (!battalionPickerToggle) return;
+    battalionPickerToggle.classList.remove('open');
+    battalionPickerToggle.setAttribute('aria-expanded', 'false');
+    battalionPickerDropdown.classList.remove('open');
+  }
+
+  function setActiveBattalionGroup(gid){
+    Array.prototype.forEach.call(document.querySelectorAll('.battalion-group'), function(g){
+      g.classList.toggle('active', g.id === gid);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.battalion-picker-item'), function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-battalion') === gid);
+    });
+    var activeBtn = document.querySelector('.battalion-picker-item[data-battalion="' + gid + '"]');
+    if (activeBtn && battalionPickerLabel) battalionPickerLabel.textContent = activeBtn.getAttribute('data-label') || '';
+    updateSubnavFor('tab-battalions');
+  }
+
+  if (battalionPickerToggle && battalionPickerDropdown) {
+    battalionPickerToggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      var willOpen = !battalionPickerToggle.classList.contains('open');
+      closeBattalionPicker();
+      closeSubnav();
+      if (willOpen) {
+        battalionPickerToggle.classList.add('open');
+        battalionPickerToggle.setAttribute('aria-expanded', 'true');
+        battalionPickerDropdown.classList.add('open');
+      }
+    });
+    document.addEventListener('click', closeBattalionPicker);
+
+    battalionPickerDropdown.addEventListener('click', function(e){
+      e.stopPropagation();
+      var btn = e.target.closest('.battalion-picker-item');
+      if (!btn) return;
+      setActiveBattalionGroup(btn.getAttribute('data-battalion'));
+      closeBattalionPicker();
+      var panel = document.getElementById('tab-battalions');
+      if (panel) panel.scrollIntoView({behavior:'auto', block:'start'});
+    });
+  }
 
   function initReadMoreIn(container){
     if (!container) return;
